@@ -11,6 +11,11 @@ class TestMyFunctions(unittest.TestCase):
         (u'ПРИВЕТ мир!!!', u'привет мир!!!'),
         (u'АБВГД', u'абвгд'),
         )
+    knownCapitalize = (
+        (u'ПРИВЕТ мир!!!', u'Привет Мир!!!'),
+        (u'АБВГД', u'Абвгд'),
+        )
+        
 
     def testLowString(self):
         for a, b in self.knownUpToLow:
@@ -20,6 +25,11 @@ class TestMyFunctions(unittest.TestCase):
     def testUpString(self):
         for a, b in self.knownLowToUp:
             result = cyrillictools.up_string(a)
+            self.assertEqual(b, result)
+
+    def testCapitalize(self):
+        for a, b in self.knownCapitalize:
+            result = cyrillictools.capitalize(a)
             self.assertEqual(b, result)
             
 if __name__ == '__main__':

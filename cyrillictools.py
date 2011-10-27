@@ -36,7 +36,8 @@ CYR_CHAR_PAIRS = (
     (u'І', u'і'),
     (u'Ї', u'ї'),
     (u'Ґ', u'ґ'),
-    (u'Є', u'є'),    
+    (u'Є', u'є'),
+    (u'Ё', u'ё'),
 )
 
 def low_string(s):
@@ -60,3 +61,13 @@ def up_string(s):
         except KeyError:
             t += c
     return t
+    
+def capitalize(s):
+    t = low_string(s)
+    words = t.split()
+    new_words = []
+    for w in words:
+        if len(w) > 0:
+            new_words.append(up_string(w[0]) + low_string(w[1:]))
+    return ' '.join(new_words)
+            
