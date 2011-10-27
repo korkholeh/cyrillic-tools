@@ -49,3 +49,14 @@ def low_string(s):
         except KeyError:
             t += c
     return t
+
+def up_string(s):
+    t = ''
+    pairs = dict((reversed(x) for x in CYR_CHAR_PAIRS))
+    for c in s:
+        try:
+            w = pairs[c]
+            t += w
+        except KeyError:
+            t += c
+    return t
